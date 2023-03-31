@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 
 
 class TreeNode:
@@ -13,7 +13,7 @@ def find_bfs(root: TreeNode, target: int) -> bool:
     if not root:
         return False
 
-    queue = collections.deque([root])
+    queue = deque([root])
 
     while queue:
         node = queue.pop()
