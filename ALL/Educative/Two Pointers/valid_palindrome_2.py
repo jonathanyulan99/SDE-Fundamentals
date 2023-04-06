@@ -4,42 +4,28 @@ by removing at most one character from it.
 '''
 
 
+def helper(_str: str, left: int, right: int) -> bool:
+    while left < right:
+        if _str[left] != _str[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+
+
 def is_palindrome(s: str) -> bool:
     # initalize two pointers to the end of the string
-    beg_index = 0
-    end_index = len(s)-1
-    _mishaps = 0
+    l, r = 0, len(s)-1
 
-    while beg_index <= end_index:
-        # if the values at the two pointers match move both towards the middle until they meet
-        if s[beg_index] == s[end_index]:
-            beg_index += 1
-            end_index -= 1
-        elif s[beg_index] != s[end_index]:
-            break
+    while l < r:
+        if s[l] != s[r]:
+            # skip a character if they aren't equivalent
+            # skipL, skipR = s[l+1:r+1], s[l:r]
+            # return (skipL == skipL[::-1] or skipR == skipR[::-1])
+            return helper(s, l+1, r) or helper(s, l, r-1)
+        l, r = l+1, r-1
 
-    _beg = beg_index
-    _end = end_index
-    # skip the first element
-    beg_index += 1
-    while beg_index <= end_index:
-        if s[_beg] == s[_end] and _beg == _end:
-            return True
-        elif s[beg_index] != s[end_index]:
-            _mishaps += 1
-        beg_index += 1
-        end_index -= 1
-
-    _end -= 1
-    while _beg <= _end:
-        if s[_beg] == s[_end] and _beg == _end:
-            return True
-        elif s[_beg] != s[_end]:
-            _mishaps += 1
-        _beg += 1
-        _end -= 1
-
-    return False if _mishaps > 1 else True
+    return True
 
 
 print(is_palindrome('abbababa') == True)
