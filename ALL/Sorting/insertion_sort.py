@@ -28,3 +28,14 @@ sample_input = [8, 5, 3, -13, 2, 1, -10, 32, 45, 0, 6]
 print(*sample_input)
 insertion_sort_2(sample_input)
 print(*sample_input)
+
+a = [10, 2, 3, 4]
+b = [0.5, 5, 6, 7]
+
+_absolute_minimum = float('inf')
+
+for x in range(len(a)):
+    for y in range(x, len(b)):  # this is where the bug is
+        _absolute_minimum = min(_absolute_minimum, abs(a[x]-b[y]))
+
+print(_absolute_minimum)

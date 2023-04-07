@@ -33,3 +33,13 @@ def print_ll(head: ListNode) -> None:
 print_ll(L1)
 L1_reverse = reverse_linked_list(L1)
 print_ll(L1_reverse)
+
+array = [1, 2, 3, 4, 5]
+
+L1 = ListNode(100)
+
+for element in array:
+    L1.next = ListNode(element)
+    L1 = L1.next
+
+print_ll(L1)
