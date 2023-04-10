@@ -34,15 +34,24 @@ def hasRepeatTangoPartner(firstSession: list[str], secondSession: list[str]) -> 
     dancer_pair_frequency = {}
 
     for index in range(len(firstSession)):
-        pair = list(sorted(firstSession[index]))
-        count = dancer_pair_frequency.get(pair[0], 0)+1
-        dancer_pair_frequency[pair[0]] = pair
-
+        # pair = list(sorted(firstSession[index]))
+        # count = dancer_pair_frequency.get(pair[0], 0)+1
+        # dancer_pair_frequency[pair[0]] = pair
+        dancer_pair_frequency[firstSession[index][0]] = firstSession[index][1]
+        dancer_pair_frequency[firstSession[index][1]] = firstSession[index][0]
+        
     for index in range(len(secondSession)):
-        pair = list(sorted(secondSession[index]))
-        count = dancer_pair_frequency.get(pair[0], -1)
-        if count == pair:
-            return True
+        # pair = list(sorted(secondSession[index]))
+        # count = dancer_pair_frequency.get(pair[0], -1)
+        # if count == pair:
+        #     return True
+        first_dancer = secondSession[index][0]
+        second_dancer = secondSession[index][1] 
+        
+        if dancer_pair_frequency.get(first_dancer,-1) == second_dancer:
+            # if dancer_pair_frequency.get(first_dancer,-1) == second_dancer or dancer_pair_frequency.get(second_dancer,-1) == first-dancer: 
+            # if these pairs arents both populated 
+            return True 
 
     return False
 
