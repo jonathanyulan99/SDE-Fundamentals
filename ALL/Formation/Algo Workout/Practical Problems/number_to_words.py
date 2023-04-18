@@ -1,8 +1,8 @@
 class Solution(object):
-    less_than_20 = ["", "One", "Two", "Three", "Four", "Five", "Six","Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
-    "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen","Nineteen"]
+    less_than_20 = ["", "One", "Two", "Three", "Four", "Five", "Six","Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen","Nineteen"]
     tens = ["","Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty","Seventy", "Eighty", "Ninety"]
     thousands = ["", "Thousand", "Million", "Billion"]
+    
     def numberToWords(self, num):
         if num == 0:
            return "Zero"
@@ -14,6 +14,7 @@ class Solution(object):
               i += 1
               num //= 1000
         return ans.rstrip()
+     
     def helper(self, n):
         if n == 0:
            return ""
