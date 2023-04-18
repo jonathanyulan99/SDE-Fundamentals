@@ -13,7 +13,7 @@ class Solution(object):
               ans = self.helper(num % 1000) + Solution.thousands[i] + " " + ans
               i += 1
               num //= 1000
-        return ans
+        return ans.rstrip()
     def helper(self, n):
         if n == 0:
            return ""
@@ -27,3 +27,4 @@ ob = Solution()
 # print(ob.numberToWords(512))
 # print(ob.numberToWords(7835271))
 print(ob.numberToWords(7835271))
+print(ob.numberToWords(1001))
