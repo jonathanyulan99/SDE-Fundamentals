@@ -46,7 +46,6 @@ def calculate_tax(taxable_income: float, brackets: list[tuple[float, float, floa
             break
     
     result_num = round(owed_taxes - tax_credits,2)
-    result = f'{result_num:0.2f}'
     return result_num if result_num >= 0 else f'You are owed {-1*result_num}'
 
 print(calculate_tax(80000,[(0,10000,0.10),(10000,30000,0.15),(30000,60000,0.25),(60000,float('inf'),0.35)],tax_credits=20000))
