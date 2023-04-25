@@ -20,7 +20,7 @@ def print_ll(head: ListNode) -> None:
 # 1->None
 # 3->None
 
-
+# recursive approach 
 def recursive_merge_sort(headA: ListNode, headB: ListNode) -> ListNode:
     # simpliest case is if headA is None or headB is None
     if headA is None:
@@ -39,6 +39,38 @@ def recursive_merge_sort(headA: ListNode, headB: ListNode) -> ListNode:
         # return headB
         return headB
 
+from typing import Optional
+# iterative approach
+def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    if not list1:
+        return list2 
+    if not list2:
+        return list1
+    
+    curr1 = list1
+    curr2 = list2 
+    result = ListNode(float('inf'))
+    curr = result 
+    while curr1 and curr2:
+        if curr1.val <= curr2.val:
+            curr.next = curr1 
+            curr1 = curr1.next 
+        else:
+            curr.next = curr2
+            curr2 = curr2.next 
+        curr = curr.next 
+    
+    while curr1:
+        curr.next = curr1
+        curr = curr.next
+        curr1 = curr1.next 
+    
+    while curr2:
+        curr.next = curr2
+        curr = curr.next
+        curr2 = curr2.next
+    
+    return result.next
 
 L1 = ListNode(1, ListNode(20, ListNode(50)))
 L2 = ListNode(1, ListNode(10, ListNode(
