@@ -107,8 +107,29 @@ def treeFold(root: Node) -> Node:
     # return our root back with the modifications made 
     return root
     
-def treeFold(root):
-    pass 
+def treeFold2(root):
+    def reverse(root):
+        if not root:
+            return 
+        
+        root.left,root.right = root.right,root.left 
+        reverse(root.left)
+        reverse(root.right) 
+        
+    def combine(left,right):
+        if left:
+            left.val+=right.val if right else 0 
+            combine(left.left,right.right if right else None)
+            combine(left.right,right.left if right else None)
+            return left 
+        if right: 
+            reverse(right)
+            return right 
+    if not root:
+        return root
+    root.left = combine(root.left,root.right)
+    root.right = None
+    return root 
 
 def compareTrees(a, b):
     if not a and not b:
