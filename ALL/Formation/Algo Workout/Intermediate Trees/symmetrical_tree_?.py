@@ -23,3 +23,22 @@ def is_symmetrical(root:TreeNode)->bool:
 
 Tree = TreeNode(1,TreeNode(2,TreeNode(3),TreeNode(4)),TreeNode(2,TreeNode(4),TreeNode(3)))
 print(is_symmetrical(Tree))
+
+def is_symmetrical_itr(root: TreeNode)->bool:
+    stack = [] 
+    if root: stack.append((root.left,root.right))
+    
+    while stack:
+        left, right = stack.pop() 
+        
+        if left and right: 
+            if left.val!= right.val: return False 
+            stack.append((left.left,right.right))
+            stack.append((left.right,right.left)) 
+        
+        elif left or right:
+            return False 
+    return True 
+
+Tree = TreeNode(1,TreeNode(2,TreeNode(None),TreeNode(4)),TreeNode(2,TreeNode(4),TreeNode(3)))
+print(is_symmetrical(Tree))
