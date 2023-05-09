@@ -10,4 +10,4 @@ class Solution:
                     helper(nums[i+1:],subseq+[nums[i]],result)
 
             helper(nums,[],result)
-        return result 
+        return result

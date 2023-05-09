@@ -11,17 +11,17 @@ class Node(object):
 
 
 def add_kth_node_from_end(head, k):
-    if not head:
-        return 0
-    i = add_kth_node_from_end(head.next, k) + 1
+    if not head.next:
+        return 1
+    i = add_kth_node_from_end(head.next, k)+1
     if i % k == 0:
         head.value += k
     return i
 
 
-l1 = Node(1, Node(2, Node(3, Node(4, Node(5)))))
+l1 = Node(1, Node(2, Node(3, Node(4, Node(5,Node(6,Node(7)))))))
 l1._print()
-add_kth_node_from_end(l1, 2)
+add_kth_node_from_end(l1, 3)
 l1._print()
 
 
