@@ -11,3 +11,25 @@ class Solution:
 
             helper(nums,[],result)
         return result
+    
+class Solution:
+    def subsets(self,nums:List[int])->list[list[int]]:
+        result = []
+        
+        subsets = [] 
+        def dfs(ind:int):
+            if ind == len(nums):
+                result.append(subsets.copy())
+                return 
+            
+            subsets.append(nums[ind])
+            dfs(ind + 1)
+            # backtrack and don't include
+            subsets.pop() 
+            dfs(ind + 1)
+        dfs(0)
+        return result 
+    
+subsets = Solution()
+nums = [1,2,3]
+print(subsets.subsets(nums))
